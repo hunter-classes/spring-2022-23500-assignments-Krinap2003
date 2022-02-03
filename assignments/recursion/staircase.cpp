@@ -23,7 +23,7 @@ int stepPerm(int n)
         return 4;
     }
     else{
-        return stepPerm(n-1)  + stepPerm(n-2) + stepPerm(n-3);
+        return stepPerm(n-3)  + stepPerm(n-2) + stepPerm(n-1);
     }
 }
 
