@@ -2,9 +2,8 @@
 #include <string>
 #include <unistd.h>
 
-//int board[5][5] = {{0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}};
 
-// int num=1;
+//Prints the chess board
 void print_board(int** board)
 {
     //std::cout << "[0;0H\n";
@@ -23,7 +22,7 @@ void print_board(int** board)
     }
 }
 
-
+//Check is the chess board is solved
 bool isSolved(int** board)
 {
     for (int i = 0; i < 5; i++)
@@ -49,6 +48,8 @@ void solve(int ** board, int row, int col, bool &solved, int num)
         return;
     }
 
+    //Return If a the it goes out of bound or if it lands on the box that
+    //is alredy used.
     if (row < 0 || col < 0 || row > 4|| col > 4 || board[row][col] != 0)
     {
         return;
@@ -60,7 +61,7 @@ void solve(int ** board, int row, int col, bool &solved, int num)
     print_board(board);
     std::cout<<"\n";
   
-    
+    //Go to every possible direction  
     if (!solved) solve(board,row+1,col+2,solved, num+1);
     if (!solved) solve(board,row+2,col+1,solved, num+1);
     if (!solved) solve(board,row-1,col-2,solved, num+1);
@@ -76,6 +77,7 @@ void solve(int ** board, int row, int col, bool &solved, int num)
 
 int main()
 {
+    //Create a 5*5 2D array to represent the chess board
     int num=1;
     int **board;
     board = new int *[5];
@@ -86,6 +88,7 @@ int main()
     //std::cout << "[2J;\n";
     bool solved = false;
     solve(board,0,0,solved, num);
+    //solve(board,4,4,solved, num);
   
     //print_board(board);
     std::cout << "Done!\n";
