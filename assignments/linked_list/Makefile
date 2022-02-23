@@ -1,4 +1,4 @@
-OBJECTS = main.o List.o node.o 
+OBJECTS = main.o List.o Node.o 
 CXXFLAGS=
 LDFLAGS=
 CXX=g++
