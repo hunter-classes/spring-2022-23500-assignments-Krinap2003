@@ -12,5 +12,5 @@ List.o: List.cpp List.h Node.h
 
 Node.o: Node.cpp Node.h
 
-Clean: 
+clean: 
 	rm -f $(OBJECTS)

@@ -27,3 +27,46 @@ std::string List::toString()
     s = s+"nullptr"; 
     return s;
 }
+
+List::~List(){
+    Node *walker = head;
+    while(walker != nullptr)
+    {
+        delete walker;
+        walker = nullptr;
+    }
+}
+
+void List::remove(std::string data)
+{
+    Node *walker = head;
+    // if(head->getData() == data)
+    // {
+    //    head = walker->getNext();
+    // }
+    while(walker != nullptr)
+    {
+        if(walker->getNext()->getData() == data)
+        { 
+            walker->setNext(walker->getNext()->getNext());
+            // delete walker->getNext();
+            // walker->setNext(nullptr);
+            break;
+        }
+         walker = walker->getNext();
+     }
+}
+
+// Node List::locate(std::string data)
+// {
+//     Node *walker = head;
+//     while(walker != nullptr)
+//     {
+//         if(walker->getData() == data)
+//         {
+//             return *walker;
+//             break;
+//         }
+//         walker = walker->getNext();
+//      }
+// }

@@ -47,7 +47,17 @@ int main(int argc, char *argv[])
     l1->insert("a");
     l1->insert("b");
     l1->insert("c");
-
+    l1->insert("d");
     std::cout<<l1->toString()<<"\n";
+
+    l1->remove("c");
+    std::cout<<l1->toString()<<"\n";
+    l1->remove("b");
+    std::cout<<l1->toString()<<"\n";
+
+    // Node test = l1->locate("c");
+    // std::cout<< test->getData();
+
+    
     return 0;
 }
