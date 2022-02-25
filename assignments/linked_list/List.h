@@ -7,9 +7,11 @@ class List{
 
     public:
         List();
-        void insert(std::string data);
-        void remove(std::string data);
-        //Node List::locate(std::string data);
         ~List();
-        std::string toString();
+        void insert(std::string data);
+        void remove(int index);
+        std::string get(int loc);
+        std::string toString(); // for testing and debugging
+
+        //void remove2(std::string data);
 };

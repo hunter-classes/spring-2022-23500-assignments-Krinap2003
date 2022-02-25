@@ -5,14 +5,59 @@ List::List(){
     head = nullptr;
 }
 
+List::~List(){
+    Node *walker = head;
+    while(walker != nullptr)
+    {
+         Node *free = walker->getNext();
+         delete free;
+    }
+}
+
 void List::insert(std::string data)
 {
     // create a new node
     Node *new_node = new Node(data);
-
+    
     //insert the new node
     new_node->setNext(head);
     head = new_node;
+}
+
+std::string List::get(int loc)
+{
+    std::string result = "";
+    Node *walker = head;
+
+    // using walker as a boolean is the sam as writing walker != nullptr
+    while(walker != nullptr && loc > 0)
+    {
+        walker = walker-> getNext();
+        loc--;
+    }
+    if(walker !=nullptr)
+    return walker->getData();
+    else
+    return ""; 
+ }
+
+void List::remove(int index)
+{
+    int i = 0;
+    Node *walker = head;
+    if(index == 0)
+    {
+        head = walker->getNext();
+        return;
+    }
+    while(i < index-1)
+    {
+        walker = walker->getNext();
+        i++;
+    }
+    Node *free = walker->getNext();
+    walker->setNext(walker->getNext()->getNext());
+    delete free;
 }
 
 std::string List::toString()
@@ -21,52 +66,35 @@ std::string List::toString()
     std::string s = "";
     while(walker != nullptr)
     {
-        s = s + walker->getData() + "-->";
+        s = s +  walker->getData() + "->";
         walker = walker->getNext();
     }
     s = s+"nullptr"; 
     return s;
 }
 
-List::~List(){
-    Node *walker = head;
-    while(walker != nullptr)
-    {
-        delete walker;
-        walker = nullptr;
-    }
-}
 
-void List::remove(std::string data)
-{
-    Node *walker = head;
-    // if(head->getData() == data)
-    // {
-    //    head = walker->getNext();
-    // }
-    while(walker != nullptr)
-    {
-        if(walker->getNext()->getData() == data)
-        { 
-            walker->setNext(walker->getNext()->getNext());
-            // delete walker->getNext();
-            // walker->setNext(nullptr);
-            break;
-        }
-         walker = walker->getNext();
-     }
-}
 
-// Node List::locate(std::string data)
+
+
+
+// void List::remove2(std::string data)
 // {
 //     Node *walker = head;
+//     if(head->getData() == data)
+//     {
+//        head = walker->getNext();
+//        return;
+//     }
 //     while(walker != nullptr)
 //     {
-//         if(walker->getData() == data)
-//         {
-//             return *walker;
+//         if(walker->getNext()->getData() == data)
+//         { 
+//             walker->setNext(walker->getNext()->getNext());
+//             // delete walker->getNext();
+//             // walker->setNext(nullptr);
 //             break;
 //         }
-//         walker = walker->getNext();
+//          walker = walker->getNext();
 //      }
 // }

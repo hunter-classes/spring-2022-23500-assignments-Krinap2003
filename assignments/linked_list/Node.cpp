@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Node.h"
 
-Node::Node() : next(nullptr)
+Node::Node() : next(nullptr) //construtor that set it to default values.
 {
 }
 
@@ -12,7 +12,7 @@ Node::Node(std::string data){
 
 Node::Node(std::string data,Node *next){
     this->data = data;
-    this->next = next;;
+    this->next = next;
 }
 
 void Node::setData(std::string data){
