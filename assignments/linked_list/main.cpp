@@ -37,8 +37,8 @@ int main(int argc, char *argv[])
     result = l1->get(i);
     std::cout << "l["<<i<<"] = " << result << "\n\n";
 
-    //l1->~List();
-    //std::cout<<l1->toString()<<"\n\n";
+    l1->~List();
+    std::cout<<l1->toString()<<"\n\n";
 
 
 

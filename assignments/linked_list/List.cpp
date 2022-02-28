@@ -7,10 +7,12 @@ List::List(){
 
 List::~List(){
     Node *walker = head;
-    while(walker != nullptr)
+    while(walker)
     {
-         Node *free = walker->getNext();
+         Node *free = walker;
+         walker = walker->getNext();
          delete free;
+         free = nullptr;
     }
 }
 
