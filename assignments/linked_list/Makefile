@@ -1,4 +1,4 @@
-OBJECTS = main.o List.o Node.o 
+OBJECTS = main.o List.o Node.o tests.o
 CXXFLAGS=
 LDFLAGS=
 CXX=g++
@@ -19,4 +19,4 @@ List.o: List.cpp List.h Node.h
 Node.o: Node.cpp Node.h
 
 clean: 
-	rm -f $(OBJECTS)
+	rm -f $(OBJECTS) 

@@ -32,8 +32,8 @@ int main(int argc, char *argv[])
     l1->remove(0);
     std::cout<<l1->toString()<<"\n\n";
 
-     std::cout<<"\nGet lenght of the Linked List\n"; 
-     std::cout<<"The Lenngth: "<<l1->length()<<"\n";
+    std::cout<<"\nGet lenght of the Linked List\n"; 
+    std::cout<<"The Lenngth: "<<l1->length()<<"\n";
 
 
     std::cout<<"\nLocate Item at index 0\n";
