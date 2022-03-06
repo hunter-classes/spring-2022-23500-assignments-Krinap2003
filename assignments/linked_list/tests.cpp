@@ -68,7 +68,51 @@ TEST_CASE("Insert Function OList")
 {
     l2->insert(1);
     l2->insert(2);
+    l2->insert(32);
+    l2->insert(25);
+    CHECK(l2->toString() == "head->1->2->25->32->nullptr");
+    l2->insert(-25);
+    CHECK(l2->toString() == "head->-25->1->2->25->32->nullptr");
+}
+
+TEST_CASE("Remove Function")
+{
+    l2->remove(1);
+    CHECK(l2->toString() == "head->-25->2->25->32->nullptr");
+    l2->remove(0);
+    CHECK(l2->toString() == "head->2->25->32->nullptr");
+}
+
+TEST_CASE("Locate Function")
+{
+    std::string result;
+    int i = 0;
+    result = l2->get(i);
+    CHECK(l2->get(i) == 2);
+    i = 1;
+    result = l2->get(i);
+    CHECK(l2->get(i) == 25);
+    i = 4;
+    result = l2->get(i);
+    CHECK(l2->get(i) == INT_MIN);
+}
+TEST_CASE("Contains")
+{
+    CHECK(l2->contains(2) == true);
+    CHECK(l2->contains(10) == false);
+}
+
+TEST_CASE("Reverse")
+{
+    l2->insert(1);
     l2->insert(3);
-    l2->insert(5);
-    CHECK(l2->toString() == "head->5->3->2->1->nullptr");
+    l2->insert(4);
+    l2->reverse();
+    CHECK(l2->toString() == "head->32->25->4->3->2->1->nullptr");
+}
+
+TEST_CASE("Destructor")
+{
+    l2->~OList();
+     CHECK(l2->toString() == "head->nullptr");
 }
