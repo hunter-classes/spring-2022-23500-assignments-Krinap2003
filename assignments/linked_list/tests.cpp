@@ -2,6 +2,7 @@
 #include "doctest.h"
 #include "List.h"
 #include "Node.h"
+#include "OList.h"
 #include <iostream>
 
 
@@ -55,5 +56,19 @@ TEST_CASE("Destructor")
     CHECK(l1->toString() == "nullptr");
 }
 
+//Test OList
+OList *l2 = new OList();
 
+TEST_CASE("Constructor Method OList")
+{
+    CHECK(l2->toString() == "head->nullptr");
+}
 
+TEST_CASE("Insert Function OList")
+{
+    l2->insert(1);
+    l2->insert(2);
+    l2->insert(3);
+    l2->insert(5);
+    CHECK(l2->toString() == "head->5->3->2->1->nullptr");
+}

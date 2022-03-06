@@ -69,13 +69,8 @@ int main(int argc, char *argv[])
     l1->insert(2);
     l1->insert(3);
     l1->insert(5);
-    std::cout<<l1->toString()<<"\n\n";
-
-    std::cout<<"\nInsert new Items in the OList at a Index 1\n"; 
-    l1->insert(1, 4);
-    std::cout<<l1->toString()<<"\n\n";
-    std::cout<<"\nInsert new Items in the List at a Index 0\n"; 
-    l1->insert(0, 6);
+    l1->insert(4);
+    l1->insert(-4);
     std::cout<<l1->toString()<<"\n\n";
 
     std::cout<<"\nLocate Item at index 0\n";
@@ -86,7 +81,7 @@ int main(int argc, char *argv[])
     i = 1;
     result = l1->get(i);
     std::cout << "l["<<i<<"] = " << result << "\n";
-    i = 7;
+    i = 6;
     result = l1->get(i);
     std::cout << "l["<<i<<"] = " << result << "\n\n";
 
@@ -99,8 +94,6 @@ int main(int argc, char *argv[])
     l1->remove(0);
     std::cout<<l1->toString()<<"\n\n";
 
-    std::cout<<"\nGet lenght of the Linked List\n"; 
-    std::cout<<"The Lenngth: "<<l1->length()<<"\n";
 
     std::cout<<"\nContains function";
     int x = 10;
@@ -108,7 +101,7 @@ int main(int argc, char *argv[])
     x = 4;
     std::cout<<"\nDoes the list contain 1: " << l1->contains(x);
 
-    std::cout<<"\n";
+    std::cout<<"\n\nTesting reverse function\n";
     l1->reverse();
     std::cout<<l1->toString()<<"\n\n";
 

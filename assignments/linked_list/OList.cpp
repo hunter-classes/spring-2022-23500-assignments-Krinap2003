@@ -24,58 +24,37 @@ OList::~OList(){
 
 
 /*
-Insert a new data at the head
+Insert a new data in increasing order
 */
 void OList::insert(int data)
 {
     // create a new node
+    ONode *walker = head;
     ONode *new_node = new ONode(data);
     
-    //insert the new node
-    new_node->setNext(head);
-    head = new_node;
-}
-
-/*
-Insert data at a given lacation at as the parameter
-*/
-void OList::insert(int loc, int data)
-{
-  ONode *tmp = new ONode(data);
-
-  ONode *walker = head;
-  ONode *trailer=nullptr; // this one follows behind walker;
-  
-  while (walker != nullptr && loc > 0)
-  {
-    trailer = walker;
-    walker = walker->getNext();
-    loc = loc - 1;
-  }
-  // walker is at n, trailer is at the point before the insertion
-  // point
-
-  // check to see if we're trying to insert beyond the end
-  // Note: we can insert a new last element.
-
-  if (loc > 0)
-  {
-    throw std::out_of_range("Out of range");
-  }
-
-  // inserting at location 0 will have trailer = nullptr
-  // so we have to deal with that special case
-  if (trailer==nullptr)
-  {
-    tmp->setNext(head);
-    head=tmp;
-  } else
-  {
-    // and finally the normal insert code
-    tmp->setNext(walker);
-    trailer->setNext(tmp);
-  
-  }
+    if(head == nullptr || head->getData() > data)
+    {
+      new_node->setNext(head);
+      head = new_node;
+    }
+    else{
+      while (walker != nullptr)
+      {
+        if(walker->getNext() == nullptr)
+        {
+          walker->setNext(new_node);
+          new_node->setNext(nullptr);
+        }
+        else if(walker->getNext()->getData() > data)
+        {
+          new_node->setNext(walker->getNext());
+          walker->setNext(new_node);
+          break;
+        }
+        walker = walker->getNext();
+      }
+    }
+    
 }
 
 /*
@@ -94,8 +73,9 @@ int OList::get(int loc)
     }
     if(walker !=nullptr)
     return walker->getData();
-    else
-    return -1; 
+    else{
+      return INT_MIN; 
+    }
 }
 
 /*
@@ -152,31 +132,17 @@ This should “reverse” the list - that is reverse the pointers
 void OList::reverse()
 {
    ONode *walker = head;
-     while(walker != nullptr )
+   ONode *trailer=nullptr; // this one follows behind walker;
+    while(walker)
     {
-        if(walker->getNext() == nullptr)
-        {
-            head = walker;
-            break;
-        }
-
-        walker = walker-> getNext();
+      ONode *nextWalker = walker->getNext();
+      walker->setNext(trailer);
+      trailer=walker;
+      walker=nextWalker;
     }
-
+    head = trailer;
 }
 
-/*
-return the lenght of the linked list
-*/
-int OList::length(){
-  int l = 0;
-  ONode *walker = head;
-  while (walker){
-    l++;
-    walker = walker->getNext();
-  }
-  return l;
-}
 
 /*
 String representation of the entire linked list

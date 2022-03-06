@@ -19,7 +19,7 @@ void ONode::setData(int data){
     this->data = data;
 }
 
-void ONode::setNext (ONode *next){
+void ONode::setNext(ONode *next){
     this->next = next;
 }
 
