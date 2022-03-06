@@ -109,6 +109,12 @@ TEST_CASE("Reverse")
     l2->insert(4);
     l2->reverse();
     CHECK(l2->toString() == "head->32->25->4->3->2->1->nullptr");
+    std::string result;
+    int i = 0;
+    result = l2->get(i);
+    CHECK(l2->get(i) == 32);
+    l2->insert(-25);
+    CHECK(l2->toString() == "head->-25->32->25->4->3->2->1->nullptr");
 }
 
 TEST_CASE("Destructor")
