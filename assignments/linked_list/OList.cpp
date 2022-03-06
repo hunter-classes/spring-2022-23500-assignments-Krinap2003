@@ -79,6 +79,106 @@ void OList::insert(int loc, int data)
 }
 
 /*
+Return the data at the given lacation as the parameter
+*/
+int OList::get(int loc)
+{
+    int result = 0;
+    ONode *walker = head;
+
+    // using walker as a boolean is the sam as writing walker != nullptr
+    while(walker != nullptr && loc > 0)
+    {
+        walker = walker-> getNext();
+        loc--;
+    }
+    if(walker !=nullptr)
+    return walker->getData();
+    else
+    return -1; 
+}
+
+/*
+Remove the data at the given index of the list 
+*/
+void OList::remove(int index)
+{
+    int i = 0;
+    ONode *walker = head;
+    if(index == 0)
+    {
+        head = walker->getNext();
+        return;
+    }
+    if(walker == nullptr)
+    {
+        throw std::out_of_range("out of range");
+        return;
+    }
+    while(i < index-1)
+    {
+        walker = walker->getNext();
+        i++;
+    }
+    ONode *free = walker->getNext();
+    walker->setNext(walker->getNext()->getNext());
+    delete free;
+}
+
+/**/
+bool OList::contains(int data)
+{
+    std::cout.setf(std::ios::boolalpha);
+    bool result;
+    ONode *walker = head;
+
+    // using walker as a boolean is the sam as writing walker != nullptr
+    while(walker != nullptr)
+    {
+        if(walker->getData() == data)
+        {
+            result = true;
+            return result;
+            break;
+        }
+        walker = walker-> getNext();
+    }
+   return false; 
+}
+
+/*
+This should “reverse” the list - that is reverse the pointers
+*/
+void OList::reverse()
+{
+   ONode *walker = head;
+     while(walker != nullptr )
+    {
+        if(walker->getNext() == nullptr)
+        {
+            head = walker;
+            break;
+        }
+
+        walker = walker-> getNext();
+    }
+
+}
+
+/*
+return the lenght of the linked list
+*/
+int OList::length(){
+  int l = 0;
+  ONode *walker = head;
+  while (walker){
+    l++;
+    walker = walker->getNext();
+  }
+  return l;
+}
+
+/*
 String representation of the entire linked list
 */
 std::string OList::toString()
@@ -92,5 +192,6 @@ std::string OList::toString()
         walker = walker->getNext();
     }
     s = s+"nullptr"; 
+
     return s;
 }

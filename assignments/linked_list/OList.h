@@ -12,6 +12,8 @@ class OList{
         void insert(int loc, int data);
         void remove(int index);
         int get(int loc);
+        bool contains(int data);
+        void reverse();
         int length();
         std::string toString(); // for testing and debugging
 

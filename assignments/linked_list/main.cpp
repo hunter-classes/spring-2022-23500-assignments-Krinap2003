@@ -78,6 +78,40 @@ int main(int argc, char *argv[])
     l1->insert(0, 6);
     std::cout<<l1->toString()<<"\n\n";
 
+    std::cout<<"\nLocate Item at index 0\n";
+    int result;
+    int i = 0;
+    result = l1->get(i);
+    std::cout << "l["<<i<<"] = " << result << "\n";
+    i = 1;
+    result = l1->get(i);
+    std::cout << "l["<<i<<"] = " << result << "\n";
+    i = 7;
+    result = l1->get(i);
+    std::cout << "l["<<i<<"] = " << result << "\n\n";
+
+
+    std::cout<<"\nRemove Item at index 1\n"; 
+    l1->remove(1);
+    std::cout<<l1->toString()<<"\n\n";
+
+    std::cout<<"\nRemove Item at index 0\n"; 
+    l1->remove(0);
+    std::cout<<l1->toString()<<"\n\n";
+
+    std::cout<<"\nGet lenght of the Linked List\n"; 
+    std::cout<<"The Lenngth: "<<l1->length()<<"\n";
+
+    std::cout<<"\nContains function";
+    int x = 10;
+    std::cout<<"\nDoes the list contain 10: " << l1->contains(x);
+    x = 4;
+    std::cout<<"\nDoes the list contain 1: " << l1->contains(x);
+
+    std::cout<<"\n";
+    l1->reverse();
+    std::cout<<l1->toString()<<"\n\n";
+
 
     return 0;
 }
