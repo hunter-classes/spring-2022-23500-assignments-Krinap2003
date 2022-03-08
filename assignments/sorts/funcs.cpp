@@ -111,9 +111,21 @@ std::vector<int> msort(std::vector<int> v)
             }
             result = merge(left, right);
         }
-        // else{
-
-        // }
+        else{
+            int oddSize = v.size()/2+1;
+            std::vector<int> left(oddSize);
+            std::vector<int> right(oddSize-1);
+            for (int i = 0; i <= oddSize; i++)
+            {
+                left[i] = v[i];
+            }
+            int j = 0;
+            for (int i = oddSize; i < v.size(); i++, j++)
+            {
+              right[j] = v[i];
+            }
+            result = merge(left, right);
+        }
     }
     return result;
 }

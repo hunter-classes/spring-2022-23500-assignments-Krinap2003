@@ -30,7 +30,7 @@ int main()
 //   print_vector(right);
 //   std::vector<int> m = merge(left,right);
 //   print_vector(m);
-std::vector<int> left = {1,2,5,6,10,15};
+std::vector<int> left = {3,7,8,12,16,19,20};
 std::vector<int> v1 = msort(left);
 print_vector(v1);
 //std::cout<<left.size();"\n";
