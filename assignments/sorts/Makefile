@@ -5,6 +5,7 @@ tests: tests.o funcs.o
 	g++ -o tests tests.o funcs.o
 
 funcs.o: funcs.cpp funcs.h 
+	g++ -c funcs.cpp -std=c++11
 
 main.o: main.cpp funcs.h 
 	g++ -c main.cpp -std=c++11
