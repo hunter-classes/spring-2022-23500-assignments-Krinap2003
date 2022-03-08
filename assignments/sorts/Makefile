@@ -1,5 +1,5 @@
 main: main.o funcs.o
-	g++ -o main main.o funcs.o -std=c++11
+	g++ -o main main.o funcs.o 
 
 tests: tests.o funcs.o
 	g++ -o tests tests.o funcs.o

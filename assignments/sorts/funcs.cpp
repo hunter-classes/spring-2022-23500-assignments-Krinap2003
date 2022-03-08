@@ -104,9 +104,10 @@ std::vector<int> msort(std::vector<int> v)
             {
                 left[i] = v[i];
             }
-             for (int i = evenSize+1; i < v.size(); i++)
+            int j = 0;
+            for (int i = evenSize; i < v.size(); i++, j++)
             {
-                left[i] = v[i];
+              right[j] = v[i];
             }
             result = merge(left, right);
         }
