@@ -54,42 +54,46 @@ std::vector<int> ssort(std::vector<int> a)
   elements in left and right, and result
   should be sorted
 */
-std::vector<int> merge(std::vector<int> left, std::vector<int> right)
-{ 
-    std::vector<int> merged;
-    // your code here
-    int l = 0;
-    int r = 0;
+std::vector<int> merge(std::vector<int> left,
+		       std::vector<int> right){
+  std::vector<int> merged;
 
-    while (l < left.size() &&
-        r < right.size()){
-        if (left[l] < right[r]){
-        merged.push_back(left[l]);
-        l++;
-        } else {
-        merged.push_back(right[r]);
-        r++;
-        }
-    }
+  // your code here
+  int l = 0;
+  int r = 0;
 
-    // add any extra elements in left
-    while (l < left.size()){
-        merged.push_back(left[l]);
-        l++;
+  while (l < left.size() &&
+	 r < right.size()){
+    if (left[l] < right[r]){
+      merged.push_back(left[l]);
+      l++;
+    } else {
+      merged.push_back(right[r]);
+      r++;
     }
-    
-
-    // add any extra elements in right
-    while (r < right.size()){
-        merged.push_back(right[r]);
-        r++;
-    }
+  }
+  // add any extra elements in left
+  while (l < left.size()){
+    merged.push_back(left[l]);
+    l++;
+  }
+  // add any extra elements in right
+  while (r < right.size()){
+    merged.push_back(right[r]);
+    r++;
+  }	 
   return merged;
 }
 
+/**
+ * Divide the vector into two part and sort the two part 
+ * seperately. then combine them in a sorted form.
+*/
 std::vector<int> msort(std::vector<int> v)
 {
     std::vector<int> result;
+    std::vector<int> left;
+    std::vector<int> right;
     if(v.size() < 2)
     {
         return v;
@@ -98,34 +102,86 @@ std::vector<int> msort(std::vector<int> v)
         if(v.size()%2==0)
         {
             int evenSize = v.size()/2;
-            std::vector<int> left(evenSize);
-            std::vector<int> right(evenSize);
-            for (int i = 0; i <= evenSize; i++)
+            for (int i = 0; i < evenSize; i++)
             {
-                left[i] = v[i];
+                left.push_back(v[i]);
             }
-            int j = 0;
-            for (int i = evenSize; i < v.size(); i++, j++)
+            for (int i = evenSize; i < v.size(); i++)
             {
-              right[j] = v[i];
+              right.push_back(v[i]);
             }
+            left = ssort(left);
+            right = ssort(right);
             result = merge(left, right);
         }
         else{
-            int oddSize = v.size()/2+1;
-            std::vector<int> left(oddSize);
-            std::vector<int> right(oddSize-1);
-            for (int i = 0; i <= oddSize; i++)
+            int oddSize = (v.size()+1)/2;
+            for (int i = 0; i < oddSize; i++)
             {
-                left[i] = v[i];
+                left.push_back(v[i]);
             }
-            int j = 0;
-            for (int i = oddSize; i < v.size(); i++, j++)
+            for (int i = oddSize; i < v.size(); i++)
             {
-              right[j] = v[i];
+              right.push_back(v[i]);
             }
+            left = ssort(left);
+            right = ssort(right);
             result = merge(left, right);
         }
     }
     return result;
+}
+
+/**
+ * Return the amount of tiem the values appears in the vector
+*/
+int count(std::vector<int> v, int value)
+{
+  int result = 0;
+  for(int i = 0; i < v.size(); i++)
+  {
+    if(v[i] == value)
+    {
+      result++;
+    }
+  }
+  return result;
+}
+
+
+/**
+ * Return the largest values in the vector
+*/
+int largest(std::vector<int> v)
+{
+  int result = 0;
+  for(auto i : v)
+  {
+    if(v[i] > result)
+    {
+      result = v[i];
+    }
+  }
+  return result;
+}
+
+/**
+ * Return the most frequently appeared value in the vector
+*/
+int mode(std::vector<int> v)
+{
+  int max = 0;
+  int result=0;
+  int freq = 0;
+
+  for(auto i: v)
+  {
+      freq = count(v, v[i]);
+      if(freq > max)
+      {
+        max = freq;
+        result = v[i];
+      }
+  }
+  return result;
 }
