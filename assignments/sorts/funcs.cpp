@@ -155,7 +155,7 @@ int count(std::vector<int> v, int value)
 int largest(std::vector<int> v)
 {
   int result = 0;
-  for(auto i : v)
+  for(int i = 0; i < v.size(); i++)
   {
     if(v[i] > result)
     {

@@ -67,11 +67,24 @@ int main()
   std::cout<<"Original vector: ";
   print_vector(v3);
   std::cout<<"1's in the vection = "<<x<<"\n";
+  size = 10;
+  std::vector<int> v6(size);
+  for (int i=0;i<size; i++){
+    v6[i] = rand()%max_val;
+  }
+  x = count(v6, 2);
+  std::cout<<"Original vector: ";
+  print_vector(v6);
+  std::cout<<"2's in the vection = "<<x<<"\n";
 
   std::cout<<"\n---------------------------";
   std::cout<<"\nTesting largest\n";
   std::cout<<"---------------------------\n";
-  std::vector<int> v4 = {100,4,1,999,0,3,-1};
+  int size2 = 10;
+  std::vector<int> v4(size2);
+  for (int i=0;i<size2; i++){
+    v4[i] = rand()%max_val;
+  }
   int y = largest(v4);
   std::cout<<"Original vector: ";
   print_vector(v4);
