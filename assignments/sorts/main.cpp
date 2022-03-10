@@ -1,4 +1,4 @@
-#include <iostream>
+ #include <iostream>
 #include <vector>
 #include <time.h>
 #include <unistd.h>
@@ -93,10 +93,23 @@ int main()
   std::cout<<"\n---------------------------";
   std::cout<<"\nTesting mode\n";
   std::cout<<"---------------------------\n";
-  std::vector<int> v5 = {1,5,4,60,8,62,62,60,60,12,6,22};
+  std::vector<int> v5 = {1,62,4,60,8,62,62,60,60,12,6,22};
   int z = mode(v5);
   std::cout<<"Original vector: ";
   print_vector(v5);
+  std::cout<<"The largest values in the vector = "<<z<<"\n";
+
+  size=200;
+  max_val=100;
+
+  std::vector<int> b(size);
+
+  for (int i=0;i<size; i++){
+    b[i] = rand()%max_val;
+  }
+   z = mode(b);
+  std::cout<<"Original vector: ";
+  print_vector(b);
   std::cout<<"The largest values in the vector = "<<z<<"\n";
 
   return 0;
