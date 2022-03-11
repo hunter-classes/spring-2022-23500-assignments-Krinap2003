@@ -49,7 +49,7 @@ int mode(std::vector<int> v)
   int result=0;
   int freq = 0;
 
-  for(auto i: v)
+  for(int i = 0; i < v.size(); i++)
   {
       freq = count(v, v[i]);
       if(freq > max)
@@ -66,20 +66,21 @@ int mode(std::vector<int> v)
 */
 int mode2(std::vector<int> v)
 {
-    // int large = largest(v);
-    // int arr[large] = { };
-    // // std::vector<int> arr;
-    // int max = 0;
-    // for(int i = 0; i < v.size(); i++)
-    // {
-    //     arr[v[i]] += 1;
-    // }
-    // for(int i = 0; i < large; i++)
-    // {
-    //     if(arr[i] > max)
-    //     {
-    //         max = arr[i];
-    //     }
-    // }
-    // return max;
+    int large = largest(v);
+    int arr[large] = {0};
+    int max = 0;
+    int index = 0;
+    for(int i = 0; i < v.size(); i++)
+    {
+        arr[v[i]] += 1;
+    }
+    for(int i = 0; i < large; i++)
+    {
+        if(arr[i] > max)
+        {
+            max = arr[i];
+            index = i;
+        }
+    }
+    return index;
 }
