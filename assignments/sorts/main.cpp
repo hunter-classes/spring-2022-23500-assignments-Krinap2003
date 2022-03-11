@@ -118,26 +118,24 @@ int main()
   int k = mode(newMode2);
   std::cout<<"Original vector: ";
   print_vector(newMode2);
-  std::cout<<"The most frequesnt value in the vector = "<<n<<"\n";
-    std::cout<<"The most frequent value in the vector = "<<k<<"\n";
+  std::cout<<"The most frequent value in the vector with mode2: "<<n<<"\n";
+  std::cout<<"The most frequent value in the vector mode: "<<k<<"\n";
 
 
-  size=20;
+  size=200000;
   max_val=100;
   std::vector<int> c(size);
   for (int i=0;i<size; i++){
     c[i] = rand()%max_val;
   }
-   z = mode2(c);
-   int h = mode(c);
+  z = mode2(c);
+  //int h = mode(c);
   std::cout<<"Original vector: ";
-  print_vector(c);
-  std::cout<<"The most frequent value in the vector = "<<z<<"\n";
-  std::cout<<"The most frequent value in the vector = "<<h<<"\n";
+  //print_vector(c);
+  std::cout<<"The most frequent value in the vector with mode2: "<<z<<"\n";
+  //std::cout<<"The most frequent value in the vector mode: "<<h<<"\n";
 
-    std::vector<int> newMode3 = {66, 75, 9, 66, 85, 30, 33, 64, 86, 6, 50, 64, 21, 49, 71, 3, 25, 64, 64, 68};
-    h = mode(newMode3);
-    std::cout<<"The most frequent value in the vector = "<<h<<"\n";
+
 
   
 
