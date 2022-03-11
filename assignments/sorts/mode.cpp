@@ -67,7 +67,11 @@ int mode(std::vector<int> v)
 int mode2(std::vector<int> v)
 {
     int large = largest(v);
-    int arr[large] = {0};
+    int arr[large];
+    for(int i = 0; i < large; i++)
+    {
+        arr[i] = 0;
+    }
     int max = 0;
     int index = 0;
     for(int i = 0; i < v.size(); i++)
@@ -79,7 +83,7 @@ int mode2(std::vector<int> v)
         if(arr[i] > max)
         {
             max = arr[i];
-            index = i;
+            index = i; 
         }
     }
     return index;
