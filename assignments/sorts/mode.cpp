@@ -60,3 +60,26 @@ int mode(std::vector<int> v)
   }
   return result;
 }
+
+/**
+ * Return the most frequently appeared value in the vector
+*/
+int mode2(std::vector<int> v)
+{
+    // int large = largest(v);
+    // int arr[large] = { };
+    // // std::vector<int> arr;
+    // int max = 0;
+    // for(int i = 0; i < v.size(); i++)
+    // {
+    //     arr[v[i]] += 1;
+    // }
+    // for(int i = 0; i < large; i++)
+    // {
+    //     if(arr[i] > max)
+    //     {
+    //         max = arr[i];
+    //     }
+    // }
+    // return max;
+}
