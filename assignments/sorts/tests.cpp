@@ -1,6 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
-#include "funcs.h"
+#include "sorts.h"
 
 TEST_CASE("Testing ssort")
 {

@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <sys/time.h>
 #include <math.h>
-#include "funcs.h"
+#include "sorts.h"
 
 int main()
 {
@@ -99,7 +99,7 @@ int main()
   print_vector(v5);
   std::cout<<"The largest values in the vector = "<<z<<"\n";
 
-  size=200;
+  size=80;
   max_val=100;
 
   std::vector<int> b(size);

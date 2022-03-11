@@ -1,17 +1,20 @@
-main: main.o funcs.o
-	g++ -o main main.o funcs.o 
+main: main.o sorts.o mode.o
+	g++ -o main main.o sorts.o mode.o
 
-tests: tests.o funcs.o
-	g++ -o tests tests.o funcs.o
+tests: tests.o sorts.o mode.o
+	g++ -o tests tests.o sorts.o mode.o
 
-funcs.o: funcs.cpp funcs.h 
-	g++ -c funcs.cpp -std=c++11
+sorts.o: sorts.cpp sorts.h 
+	g++ -c sorts.cpp -std=c++11
 
-main.o: main.cpp funcs.h 
+mode.o: mode.cpp sorts.h
+	g++ -c mode.cpp -std=c++11
+
+main.o: main.cpp sorts.h 
 	g++ -c main.cpp -std=c++11
 
-tests.o: tests.cpp doctest.h funcs.h 
+tests.o: tests.cpp doctest.h sorts.h 
 	g++ -c tests.cpp -std=c++11
 
 clean:
-	rm -f main.o funcs.o tests.o
+	rm -f main.o sorts.o tests.o mode.o
