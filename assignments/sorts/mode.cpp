@@ -62,7 +62,8 @@ int mode(std::vector<int> v)
 }
 
 /**
- * Return the most frequently appeared value in the vector
+ * Return the most frequently appeared value in the vector using the 
+ * memoization technique
 */
 int mode2(std::vector<int> v)
 {

@@ -122,7 +122,7 @@ int main()
   std::cout<<"The most frequent value in the vector mode: "<<k<<"\n";
 
 
-  size=200000;
+  size=10000000;
   max_val=100;
   std::vector<int> c(size);
   for (int i=0;i<size; i++){
@@ -134,19 +134,6 @@ int main()
   //print_vector(c);
   std::cout<<"The most frequent value in the vector with mode2: "<<z<<"\n";
   //std::cout<<"The most frequent value in the vector mode: "<<h<<"\n";
-
-
-
-  
-
-
-  
-  
-
-
-  
-  
-
 
   return 0;
 }
