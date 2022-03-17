@@ -122,7 +122,7 @@ int main()
   std::cout<<"The most frequent value in the vector mode: "<<k<<"\n";
 
 
-  size=10000000;
+  size= 5000000;
   max_val=100;
   std::vector<int> c(size);
   for (int i=0;i<size; i++){

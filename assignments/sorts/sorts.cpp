@@ -99,8 +99,6 @@ std::vector<int> msort(std::vector<int> v)
         return v;
     }
     else{
-        if(v.size()%2==0)
-        {
             int evenSize = v.size()/2;
             for (int i = 0; i < evenSize; i++)
             {
@@ -113,22 +111,7 @@ std::vector<int> msort(std::vector<int> v)
             left = ssort(left);
             right = ssort(right);
             result = merge(left, right);
-        }
-        else{
-            int oddSize = (v.size()+1)/2;
-            for (int i = 0; i < oddSize; i++)
-            {
-                left.push_back(v[i]);
-            }
-            for (int i = oddSize; i < v.size(); i++)
-            {
-              right.push_back(v[i]);
-            }
-            left = ssort(left);
-            right = ssort(right);
-            result = merge(left, right);
-        }
-    }
+     }
     return result;
 }
 
