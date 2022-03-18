@@ -42,6 +42,28 @@ int stepPerm(int n)
 //     }
 //    return w;
 // }
+int soln[1000];
+int ways_mon(int steps)
+{
+    if(steps == 0)
+    {
+        return 1;
+    }
+
+    if(soln[steps] != 0)
+    {
+        return soln[steps];
+    }
+    int w = 0;
+    for (int i = 3; i >= 1; i--)
+    {
+        int r = steps -i;
+        if(r>=0)
+        w = w + ways_mon(r);
+    }
+    soln[steps] = w;
+   return w;
+}
 
 int fibtable[10000];
 int fib_dyn(int n){
@@ -84,6 +106,15 @@ int main()
     std::cout<<fib_dyn(10)<<std::endl;
     std::cout<<fib_dyn(7)<<std::endl;
     std::cout<<fib_dyn(7000)<<std::endl;
+
+
+    int n = 0;
+    for (int i = 0; i < 1000; i++)
+    {
+        soln[i] = 0;
+    }
+    std::cout<<ways_mon(700);
+    
     return 0;
 }
 
