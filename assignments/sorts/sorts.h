@@ -10,3 +10,6 @@ int count(std::vector<int> v, int value);
 int largest(std::vector<int> v);
 int mode(std::vector<int> v);
 int mode2(std::vector<int> v);
+std::vector<int> qsort(std::vector<int> list);
+void print_help(char *command_name);
+std::vector<int> qsort2(std::vector<int> list, int low, int high);
