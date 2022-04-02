@@ -37,12 +37,12 @@ std::vector<int> ssort(std::vector<int> a)
     {
         // find the smallest value from i to the end
         min_index = find_min_index(a,i,len);
-        
+
         // swap it into position i
         tmp = a[i];
         a[i] = a[min_index];
         a[min_index] = tmp;
-        
+
     }
     return a;
 }
@@ -81,12 +81,12 @@ std::vector<int> merge(std::vector<int> left,
   while (r < right.size()){
     merged.push_back(right[r]);
     r++;
-  }	 
+  }
   return merged;
 }
 
 /**
- * Divide the vector into two part and sort the two part 
+ * Divide the vector into two part and sort the two part
  * seperately. then combine them in a sorted form.
 */
 std::vector<int> msort(std::vector<int> v)
@@ -118,7 +118,7 @@ std::vector<int> msort(std::vector<int> v)
 std::vector<int> qsort(std::vector<int> list){
 
   int i,j;
-  
+
   // base case
   if (list.size() <= 1){
     return list;
@@ -127,7 +127,7 @@ std::vector<int> qsort(std::vector<int> list){
   // select a pivot value.
   // for now, just pick list[0]
   int pivot = list[0];
-  
+
   // make 2 new vectors
   std::vector<int> lower,higher;
 
@@ -140,7 +140,7 @@ std::vector<int> qsort(std::vector<int> list){
       higher.push_back(list[i]);
     }
   }
-  
+
   lower = qsort(lower);
   higher = qsort(higher);
 
@@ -156,9 +156,9 @@ std::vector<int> qsort(std::vector<int> list){
     list[i] = higher[j];
     i++;
   }
-  
+
   // return the sorted list
-  return list; 
+  return list;
 }
 
 
@@ -166,9 +166,9 @@ std::vector<int> qsort(std::vector<int> list){
 Choose the median value of the list as the pivot point\
 test it on he sorted data set with the qsort
 */
-std::vector<int> qsort2(std::vector<int> list, int low, int high){
-  
-}
+// std::vector<int> qsort2(std::vector<int> list, int low, int high){
+//
+// }
 
 void print_help(char *command_name){
   std::cout << "Usage: "<< command_name;
@@ -177,5 +177,3 @@ void print_help(char *command_name){
   std::cout << " -s DATA_SET_SIZE\n";
   std::cout << " -a[s|m]: s - selection, m - merge\n";
 }
-
-
