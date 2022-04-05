@@ -12,4 +12,5 @@ int mode(std::vector<int> v);
 int mode2(std::vector<int> v);
 std::vector<int> qsort(std::vector<int> list);
 void print_help(char *command_name);
-std::vector<int> qsort2(std::vector<int> list, int low, int high);
+int partition(std::vector<int> &values, int left, int right);
+void qsort2(std::vector<int> &values, int left, int right);

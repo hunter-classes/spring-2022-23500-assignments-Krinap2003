@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <sys/time.h>
 #include <math.h>
+#include "sorts.h"
+using namespace std;
 
 
 //This function will print the vector
@@ -161,14 +163,21 @@ std::vector<int> qsort(std::vector<int> list){
   return list;
 }
 
-
 /*
 Choose the median value of the list as the pivot point\
 test it on he sorted data set with the qsort
 */
-// std::vector<int> qsort2(std::vector<int> list, int low, int high){
-//
-// }
+/*Got the source code from "The polyglot developer"
+https://www.thepolyglotdeveloper.com/2019/04/sort-vector-integers-quicksort-algorithm-cpp/
+*/
+void qsort2(vector<int> &values, int left, int right) {
+    if(left < right) {
+        int pivotIndex = partition(values, left, right);
+        qsort2(values, left, pivotIndex - 1);
+        qsort2(values, pivotIndex, right);
+    }
+
+}
 
 void print_help(char *command_name){
   std::cout << "Usage: "<< command_name;
@@ -177,3 +186,28 @@ void print_help(char *command_name){
   std::cout << " -s DATA_SET_SIZE\n";
   std::cout << " -a[s|m]: s - selection, m - merge\n";
 }
+
+
+int partition(vector<int> &values, int left, int right) {
+    int pivotIndex = left + (right - left) / 2;
+    int pivotValue = values[pivotIndex];
+    int i = left, j = right;
+    int temp;
+    while(i <= j) {
+        while(values[i] < pivotValue) {
+            i++;
+        }
+        while(values[j] > pivotValue) {
+            j--;
+        }
+        if(i <= j) {
+            temp = values[i];
+            values[i] = values[j];
+            values[j] = temp;
+            i++;
+            j--;
+        }
+    }
+    return i;
+}
+

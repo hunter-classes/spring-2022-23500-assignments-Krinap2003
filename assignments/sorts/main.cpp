@@ -197,6 +197,9 @@ int main(int argc, char *argv[])
     } else if (algorithm == 'q'){
       a = qsort(a);
     }
+    else if(algorithm == 'r'){
+       qsort2(a, 0, a.size()-1);
+    }
 
 
     gettimeofday(&tp,NULL);
