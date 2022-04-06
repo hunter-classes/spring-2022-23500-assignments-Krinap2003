@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <sys/time.h>
 #include <math.h>
-#include "sorts.h"
+
 
 /**
  * Return the amount of tiem the values appears in the vector
