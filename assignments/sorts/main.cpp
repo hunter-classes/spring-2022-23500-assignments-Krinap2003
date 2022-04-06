@@ -7,6 +7,89 @@
 #include <math.h>
 #include "sorts.h"
 
+extern char *optarg;
+
+int main(int argc, char *argv[])
+  {
+    int size = 20; // default vector size
+    int max_val = 100; // default max value for entries
+
+    char algorithm = 's' ; //default to selection sort
+    bool print = false; // do we print before and after sorting?
+    char c;
+
+
+    while ( ( c = getopt(argc, argv, "phs:m:a:")) != -1){
+
+      switch (c) {
+      case 'h' :
+	print_help(argv[0]);
+	exit(0);
+	break;
+      case 'p' :
+	print = true;
+	break;
+      case 's' :
+	size = std::stoi(optarg);
+	break;
+      case 'm' :
+	max_val = std::stoi(optarg);
+	break;
+      case 'a':
+	algorithm = optarg[0]; // or *optarg
+      }
+    }
+
+    srand(time(nullptr));
+    //std::vector<int> a = {};
+    std::vector<int> a(size);
+    int i;
+    for (i=0;i<size; i++){
+      a[i] = rand()%max_val;
+    }
+
+
+    if (print) {
+      print_vector(a);
+      std::cout << "\n";
+    }
+
+    std::cout << "Starting the sort!\n";
+    struct timeval tp;
+
+    gettimeofday(&tp,NULL);
+    long start_time = tp.tv_sec *1000 + tp.tv_usec / 1000;
+
+    if (algorithm == 's'){
+      a = ssort(a);
+    } else if (algorithm == 'm'){
+
+      a = msort(a);
+    } else if (algorithm == 'q'){
+      a = qsort(a);
+    }
+    else if(algorithm == 'r'){
+       qsort2(a, 0, a.size()-1);
+    }
+
+
+    gettimeofday(&tp,NULL);
+    long current_time = tp.tv_sec *1000 + tp.tv_usec / 1000;
+
+    long elapsed = current_time - start_time;
+
+    if (print) {
+      print_vector(a);
+    }
+    std::cout << "Algorithm: " << algorithm << "\n";
+    std::cout << "Time: " << elapsed << "\n";
+
+    return 0;
+  }
+
+
+//  OLD TESTS
+
 // int main()
 // {
 //   int size=20;
@@ -137,83 +220,3 @@
 
 //   return 0;
 // }
-extern char *optarg;
-
-int main(int argc, char *argv[])
-  {
-    int size = 20; // default vector size
-    int max_val = 100; // default max value for entries
-
-    char algorithm = 's' ; //default to selection sort
-    bool print = false; // do we print before and after sorting?
-    char c;
-
-
-    while ( ( c = getopt(argc, argv, "phs:m:a:")) != -1){
-      
-      switch (c) {
-      case 'h' :
-	print_help(argv[0]);
-	exit(0);
-	break;
-      case 'p' :
-	print = true;
-	break;
-      case 's' :
-	size = std::stoi(optarg);
-	break;
-      case 'm' :
-	max_val = std::stoi(optarg);
-	break;
-      case 'a':
-	algorithm = optarg[0]; // or *optarg
-      }
-    }
-    
-    srand(time(nullptr));
-    std::vector<int> a(size);
-    int i;
-    for (i=0;i<size; i++){
-      a[i] = rand()%max_val;
-    }
-  
-  
-    if (print) {
-      print_vector(a);
-      std::cout << "\n";
-    }
-
-    std::cout << "Starting the sort!\n";
-    struct timeval tp;
-    
-    gettimeofday(&tp,NULL);
-    long start_time = tp.tv_sec *1000 + tp.tv_usec / 1000;
-
-    if (algorithm == 's'){
-      a = ssort(a);
-    } else if (algorithm == 'm'){
-
-      a = msort(a);
-    } else if (algorithm == 'q'){
-      a = qsort(a);
-    }
-    else if(algorithm == 'r'){
-       qsort2(a, 0, a.size()-1);
-    }
-
-
-    gettimeofday(&tp,NULL);
-    long current_time = tp.tv_sec *1000 + tp.tv_usec / 1000;
-
-    long elapsed = current_time - start_time;
-  
-    if (print) {
-      print_vector(a); 
-    }
-    std::cout << "Algorithm: " << algorithm << "\n";
-    std::cout << "Time: " << elapsed << "\n";
-  
-
-  
-    return 0;
-  }
