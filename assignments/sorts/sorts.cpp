@@ -199,7 +199,6 @@ void qsort2(vector<int> &values, int left, int right) {
         qsort2(values, left, pivotIndex - 1);
         qsort2(values, pivotIndex, right);
     }
-
 }
 
 void print_help(char *command_name){
@@ -214,7 +213,7 @@ void print_help(char *command_name){
 extern char *optarg;
 
 int main(int argc, char *argv[])
-  {
+{
     int size = 20; // default vector size
     int max_val = 100; // default max value for entries
 
@@ -288,6 +287,42 @@ int main(int argc, char *argv[])
     std::cout << "Algorithm: " << algorithm << "\n";
     std::cout << "Time: " << elapsed << "\n";
 
+
+    std::cout<<"\nBasic Tests\n-------------------------------------------------------------\n";
+    std::vector<int> b(size);
+    for (int j = 0; j <size; j++){
+      b[j] = rand()%max_val;
+    }
+    std::vector<int> sorted;
+    std::cout<<"Testing msort \n"<<"Original Vector: ";
+    print_vector(b);
+    sorted = msort(b);
+    std::cout<<"Sorted Vector: ";
+    print_vector(sorted);
+
+    std::cout<<"\n-------------------------------------------------------------\n";
+    std::vector<int> d(20);
+    for (int j = 0; j < d.size(); j++){
+      d[j] = rand()%max_val;
+    }
+    std::cout<<"Testing qsort \n"<<"Original Vector: ";
+    print_vector(d);
+    sorted = qsort(d);
+    std::cout<<"Sorted Vector: ";
+    print_vector(sorted);
+
+
+    std::cout<<"\n-------------------------------------------------------------\n";
+    std::vector<int> e(20);
+    for (int j = 0; j < e.size(); j++){
+      e[j] = rand()%max_val;
+    }
+    std::cout<<"Testing qsort2 \n"<<"Original Vector: ";
+    print_vector(e);
+    qsort2(e,0,e.size()-1);
+    std::cout<<"Sorted Vector: ";
+    print_vector(e);
+
     return 0;
-  }
+}
 
