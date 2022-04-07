@@ -289,7 +289,7 @@ int main(int argc, char *argv[])
 
 
     std::cout<<"\nBasic Tests\n-------------------------------------------------------------\n";
-    std::vector<int> b(size);
+    std::vector<int> b(20);
     for (int j = 0; j <size; j++){
       b[j] = rand()%max_val;
     }
