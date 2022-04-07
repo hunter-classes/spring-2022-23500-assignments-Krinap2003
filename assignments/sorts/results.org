@@ -1,65 +1,15 @@
 //OBSERVATION HOW DIFFERENT SORTING ALGORITHMS PERFORM
 
-One a small size randomly produced vector all the algorithms (merge sort, quick sort, quick sort2) worked almost the same
-with a 0 runtime. As the random vector increased in size quick sort2 was the fastest, and than the quick sort and merge sort was 
-the slowest. This could be because the quick sort2 performs inplace sorting without procuding any other vector other than the One
-passed in as a parameter so it saves a lot of time that the other algorithms use to copy the data from one vector to the other.
-Original quick sort is slower becase it has a bad pivot point (the first number in the vrotor). And the merge sort was the slowest 
-compared to qsort and qsort2 because when the data set get larger the merge sort takes longer to get back to the based case and in 
-addition to that it also hase to sort the vector returned to merge them together in proper order. When I tested these three 
-algorithms on Already sorted vector of size 500, the quick sort2 was the fastest than the merge and than the Original quick sort.
-The Reason why the Original quick sort was the slowest becuase as it picks it's first element as the pivot point it still goes
-through the entire list to figure out that the list is already sorted.
+On a randomly selected array
+    On a small size array all the algorithms(merge, quick1_badpivot, quick1_goodpivot,quick2_badpivot, and quick2_goodpivot) 
+    performed the same they all had a run time of 0. But on a medium size vector of 500 quick2_badpivot and quick2_goodpivot 
+    performed the best, than the quick1_goodpivot than quick1_badpivot and last was merge sort. This could be because the qsort2
+    algorithm saves time on creating different vectors. When the size of the vector was increased more to 100000, qsort2 performed
+    the best than the quick1_badpivot, quick1_goodpivot, and merge sort.
 
-//Two digit values
-random vector small size (10)
-selection sort: 0
-merge sort: 0
-quick sort: 0
-quick sort2: 0
+On an already sorted vector
+    When I tested these three 
+    algorithms on Already sorted vector of size 500, the quick sort2 was the fastest than the merge and than the Original quick sort.
+    The Reason why the Original quick sort was the slowest becuase as it picks it's first element as the pivot point it still goes
+    through the entire list to figure out that the list is already sorted.
 
-random vector medium size (500)
-selection sort: 8
-merge sort: 4
-quick sort: 3
-quick sort2: 0
-
-random vector medium size (100000)
-selection sort: 190839
-merge sort: 96500
-quick sort: 6745
-quick sort2: 24
-
-
-//four digit values
-random vector small size (10)
-selection sort: 0
-merge sort: 0
-quick sort: 0
-quick sort2: 0
-
-random vector medium size (500)
-selection sort: 8
-merge sort: 4
-quick sort: 3
-quick sort2: 0
-
-random vector medium size (100000)
-selection sort: too long
-merge sort: 95149
-quick sort: 578
-quick sort2: 31
-
-
-//Already sorted Vector
-size(15)
-selection sort: 0
-merge sort: 0
-quick sort: 0
-quick sort2: 0
-
-size(500)
-selection sort: 7
-merge sort: 4
-quick sort: 26
-quick sort2: 0

@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <sys/time.h>
 #include <math.h>
+#include "sorts.cpp"
 
 
 /**

@@ -207,10 +207,8 @@ void print_help(char *command_name){
   std::cout << " [-h|-p|-m N|-s N|-a algorithm]\n\n";
   std::cout << " -m MAX_ELEMENT_SIZE\n";
   std::cout << " -s DATA_SET_SIZE\n";
-  std::cout << " -a[s|m]: s - selection, m - merge\n";
+  std::cout << " -a[s|m]: s - selection, m - merge, q - qsort, r - qsort2\n";
 }
-
-
 
 
 extern char *optarg;
@@ -247,7 +245,6 @@ int main(int argc, char *argv[])
     }
 
     srand(time(nullptr));
-    //std::vector<int> a = {};
     std::vector<int> a(size);
     int i;
     for (i=0;i<size; i++){
@@ -277,6 +274,7 @@ int main(int argc, char *argv[])
     else if(algorithm == 'r'){
        qsort2(a, 0, a.size()-1);
     }
+    
 
 
     gettimeofday(&tp,NULL);
