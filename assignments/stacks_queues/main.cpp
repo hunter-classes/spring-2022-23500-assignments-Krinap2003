@@ -38,7 +38,7 @@ int main()
   } catch (int e){
     std::cout << "Tried to pop when empty, code: " << e << "\n";
   }
-  
+
   s->~Stack();
   std::cout << s->is_empty() << "\n";
 
