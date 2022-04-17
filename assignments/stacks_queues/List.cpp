@@ -1,6 +1,7 @@
 #include <iostream>
 #include "List.h"
 #include <string>
+#include <climits>
 
 /*
 Constructor 

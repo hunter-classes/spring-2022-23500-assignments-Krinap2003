@@ -2,6 +2,7 @@
 #include "stack.h"
 
 
+
 Stack::Stack(){
   stack = new List();
   size = 0;
