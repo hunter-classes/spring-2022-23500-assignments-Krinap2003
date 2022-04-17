@@ -1,5 +1,6 @@
 #include <iostream>
 #include "List.h"
+#include <string>
 
 /*
 Constructor 
@@ -7,7 +8,6 @@ Constructor
 List::List(){
     head = nullptr;
 }
-
 
 /*
 Deconstructor
@@ -24,68 +24,55 @@ List::~List(){
 
 
 /*
-Insert a new data at the head
+Insert a new data in increasing order
 */
-void List::insert(std::string data)
+void List::insert(int data)
 {
     // create a new node
+    Node *walker = head;
     Node *new_node = new Node(data);
     
-    //insert the new node
-    new_node->setNext(head);
-    head = new_node;
+    if(head == nullptr || head->getData() > data)
+    {
+      new_node->setNext(head);
+      head = new_node;
+    }
+    else{
+      while (walker != nullptr)
+      {
+        if(walker->getNext() == nullptr)
+        {
+          walker->setNext(new_node);
+          new_node->setNext(nullptr);
+        }
+        else if(walker->getNext()->getData() > data)
+        {
+          new_node->setNext(walker->getNext());
+          walker->setNext(new_node);
+          break;
+        }
+        walker = walker->getNext();
+      }
+    }
+    
 }
 
-
-/*
-Insert data at a given lacation at as the parameter
-*/
-void List::insert(int loc, std::string data)
-{
-  Node *tmp = new Node(data);
-
-  Node *walker = head;
-  Node *trailer=nullptr; // this one follows behind walker;
-  
-  while (walker != nullptr && loc > 0)
-  {
-    trailer = walker;
-    walker = walker->getNext();
-    loc = loc - 1;
-  }
-  // walker is at n, trailer is at the point before the insertion
-  // point
-
-  // check to see if we're trying to insert beyond the end
-  // Note: we can insert a new last element.
-
-  if (loc > 0)
-  {
-    throw std::out_of_range("Out of range");
-  }
-
-  // inserting at location 0 will have trailer = nullptr
-  // so we have to deal with that special case
-  if (trailer==nullptr)
-  {
-    tmp->setNext(head);
-    head=tmp;
-  } else
-  {
-    // and finally the normal insert code
-    tmp->setNext(walker);
-    trailer->setNext(tmp);
-  
-  }
+void List::insert2(int i, int d){
+    Node *node = new Node(d), *p = head;
+    if(i == 0){
+        node->setNext(head), head = node; return;
+    }
+    while(--i) p = p->getNext();
+    node->setNext(p->getNext());
+    p->setNext(node);
 }
-
 
 /*
 Return the data at the given lacation as the parameter
 */
-std::string List::get(int loc)
+int List::get(int loc)
 {
-    std::string result = "";
+    int result = 0;
     Node *walker = head;
 
     // using walker as a boolean is the sam as writing walker != nullptr
@@ -96,10 +83,10 @@ std::string List::get(int loc)
     }
     if(walker !=nullptr)
     return walker->getData();
-    else
-    return ""; 
+    else{
+      return INT_MIN; 
+    }
 }
-
 
 /*
 Remove the data at the given index of the list 
@@ -128,18 +115,44 @@ void List::remove(int index)
     delete free;
 }
 
-/*
-return the lenght of the linked list
-*/
-int List::length(){
-  int l = 0;
-  Node *walker = head;
-  while (walker){
-    l++;
-    walker = walker->getNext();
-  }
-  return l;
+/**/
+bool List::contains(int data)
+{
+    std::cout.setf(std::ios::boolalpha);
+    bool result;
+    Node *walker = head;
+
+    // using walker as a boolean is the sam as writing walker != nullptr
+    while(walker != nullptr)
+    {
+        if(walker->getData() == data)
+        {
+            result = true;
+            return result;
+            break;
+        }
+        walker = walker-> getNext();
+    }
+   return false; 
 }
+
+/*
+This should “reverse” the list - that is reverse the pointers
+*/
+void List::reverse()
+{
+   Node *walker = head;
+   Node *trailer=nullptr; // this one follows behind walker;
+    while(walker)
+    {
+      Node *nextWalker = walker->getNext();
+      walker->setNext(trailer);
+      trailer=walker;
+      walker=nextWalker;
+    }
+    head = trailer;
+}
+
 
 /*
 String representation of the entire linked list
@@ -147,12 +160,14 @@ String representation of the entire linked list
 std::string List::toString()
 {
     Node *walker = head;
-    std::string s = "";
+    std::string s = "head->";
     while(walker != nullptr)
     {
-        s = s +  walker->getData() + "->";
+        std::string str = std::to_string(walker->getData());
+        s = s + str + "->";
         walker = walker->getNext();
     }
     s = s+"nullptr"; 
+
     return s;
 }

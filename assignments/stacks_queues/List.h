@@ -8,12 +8,12 @@ class List{
     public:
         List();
         ~List();
-        void insert(std::string data);
-        void insert(int loc, std::string data);
+        void insert(int data);
+        void insert2(int i, int d);
         void remove(int index);
-        std::string get(int loc);
-        int length();
+        int get(int loc);
+        bool contains(int data);
+        void reverse();
         std::string toString(); // for testing and debugging
 
-        //void remove2(std::string data);
 };

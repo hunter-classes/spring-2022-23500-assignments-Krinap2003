@@ -11,7 +11,7 @@ stack.o: stack.cpp stack.h
 
 queue.o: queue.cpp queue.h
 
-node.o: Node.cpp Node.h
+Node.o: Node.cpp Node.h
 
 List.o: List.cpp List.h
 
@@ -19,4 +19,4 @@ tests.o: tests.cpp doctest.h stack.h queue.h
 	g++ -c tests.cpp -std=c++11
 
 clean:
-	rm -f main.o tests.o stack.o queue.o Node.o List.o
+	rm -f main.o tests.o stack.o queue.o Node.o List.o 
