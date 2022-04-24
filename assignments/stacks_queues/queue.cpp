@@ -101,10 +101,11 @@ bool Queue::is_full(){
 //Print the Queue
 std::string Queue::printQueue()
 {
-    // std::string result = "";
+    std::string result = "head->";
+
     if(is_empty())
     {
-        return result;
+        return result+"tail";
     }
     // else{
     //      result += "head->";
@@ -118,8 +119,8 @@ std::string Queue::printQueue()
     
    //return result;
 
-   std::string result = "head->";
-    if(tail <= head) {
+   //std::string result = "head->";
+    else if(tail <= head) {
         for (int i = 0; i < size; i++) {
             result += std::to_string(queue[i]);
             result += "->"; 
