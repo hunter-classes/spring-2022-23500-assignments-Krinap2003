@@ -95,10 +95,15 @@ int main()
   q->sequeue();
   q->sequeue();
   q->sequeue();
+  q->sequeue();
+  q->sequeue();
+  
 
-  // q->~Queue();
-  // std::cout<<"Destructing\n";
-  // std::cout<<"Is the queue full: "<<q->is_full()<<"\n";
+  q->~Queue();
+  std::cout<<"Destructing\n";
+  std::cout<<"Is the queue full: "<<q->is_full()<<"\n";
+  std::cout<<q->printQueue()<<"\n";
+
 
   return 0;
 }

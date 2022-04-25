@@ -16,7 +16,7 @@ Queue::Queue(){
 Queue::~Queue(){
    
     delete[] queue;
-    queue = nullptr;
+    //queue = nullptr;
     int head, tail, numAdded = 0;
 }
 

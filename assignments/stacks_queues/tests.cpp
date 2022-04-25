@@ -68,7 +68,11 @@ TEST_CASE("sequeue"){
     q1->enqueue(2);
     q1->enqueue(3);
     CHECK(q1->printQueue() == "head->1->2->3->tail");
+    CHECK(q1->is_full() == false);
+    q1->~Queue();
+    CHECK(q1->printQueue() != "head->1->2->3->tail");
 }
+
 
 
 
