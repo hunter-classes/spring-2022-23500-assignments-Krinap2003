@@ -69,13 +69,13 @@ int Queue::front(){
 
 //Return True if the queue empty and false otherwise
 bool Queue::is_empty(){
-    if(head == tail)
+    if(head == tail && numAdded < 1)
     {
-        if(numAdded < 1)
-        {
+        // if(numAdded < 1)
+        // {
             std::cout.setf(std::ios::boolalpha);
             return true;
-        }
+        //}
     }
     std::cout.setf(std::ios::boolalpha);
          return false;
