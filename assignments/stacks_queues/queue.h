@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #define QUEUE_ERR_EMPTY 1
 #define QUEUE_ERR_FULL 2
 #define QUEUE_ERR_OTHER 4

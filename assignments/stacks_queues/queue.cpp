@@ -16,7 +16,6 @@ Queue::Queue(){
 Queue::~Queue(){
    
     delete[] queue;
-    //queue = nullptr;
     int head, tail, numAdded = 0;
 }
 
@@ -71,11 +70,10 @@ int Queue::front(){
 bool Queue::is_empty(){
     if(head == tail && numAdded < 1)
     {
-        // if(numAdded < 1)
-        // {
+    
             std::cout.setf(std::ios::boolalpha);
             return true;
-        //}
+        
     }
     std::cout.setf(std::ios::boolalpha);
          return false;
@@ -84,14 +82,13 @@ bool Queue::is_empty(){
 
 //Return True if the queue is full and false otherwise
 bool Queue::is_full(){
-    //std::cout<<head<<tail<<numAdded<<"\n";
+    
     if((head%5 == tail%5) && numAdded > 0) 
     {
-        // if(numAdded > 0)
-        // {
+        
             std::cout.setf(std::ios::boolalpha);
             return true;
-        //}
+    
     }
     std::cout.setf(std::ios::boolalpha);
     return false;
@@ -107,19 +104,6 @@ std::string Queue::printQueue()
     {
         return result+"tail";
     }
-    // else{
-    //      result += "head->";
-    //         for(int i = head; i < tail; i++)
-    //         {
-    //             std::string temp = std::to_string(queue[i]);
-    //             result+=temp+"->";
-    //         }
-    //     result+="tail";
-    // }
-    
-   //return result;
-
-   //std::string result = "head->";
     else if(tail <= head) {
         for (int i = 0; i < size; i++) {
             result += std::to_string(queue[i]);
