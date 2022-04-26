@@ -10,14 +10,14 @@ BSTree::BSTree(){
 
 // }
 
-std::string BSTree::Transverse(Node *l){
+std::string BSTree::get_debug_stringHelper(Node *l){
     std::string result = "";
     if(l == nullptr)
     {
         result += "";
     }
     else{
-        result += (std::to_string(l->getData()))+"->"+Transverse(l->getRight()) + Transverse(l->getLeft());
+        result += (std::to_string(l->getData()))+"->"+get_debug_stringHelper(l->getRight()) + get_debug_stringHelper(l->getLeft());
      }
      return result;
 }
@@ -31,7 +31,7 @@ std::string BSTree::get_debug_string(){
     // else{
     //     return std::to_string(root->getData())+std::to_string(root->getLeft()->getData());
     //  }
-    return Transverse(root);
+    return get_debug_stringHelper(root);
 }
 
 void BSTree::setup(){
