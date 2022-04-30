@@ -124,10 +124,37 @@ int BSTree::search(int value){
   // not found so we'll throw an exception
 
   throw 1; // we should define our exceptions.
-
-    
-  
+ 
 }
+
+int BSTree::rsearch(int value){
+   Node *t = root;
+   return rsearch(value, t);
+
+}
+
+int BSTree::rsearch(int value, Node *p){
+
+  while (p != nullptr){
+    int tval = p->getData();
+    if (tval==value){
+      // here we'd really return a full object
+      // with all the stuff associated with value
+      // not just an int
+      return value;
+    }
+
+    if (tval < value){
+      p = p->getRight();
+    } else {
+      p = p->getLeft();
+    }
+    
+  }
+  throw 1;
+}
+
+
 
 // we will always insert new nodes as leaves
 void BSTree::insert(int value){
