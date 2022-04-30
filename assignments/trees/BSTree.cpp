@@ -135,23 +135,22 @@ int BSTree::rsearch(int value){
 
 int BSTree::rsearch(int value, Node *p){
 
-  while (p != nullptr){
-    int tval = p->getData();
-    if (tval==value){
-      // here we'd really return a full object
-      // with all the stuff associated with value
-      // not just an int
-      return value;
-    }
 
-    if (tval < value){
-      p = p->getRight();
-    } else {
-      p = p->getLeft();
-    }
-    
+  if(p == nullptr){
+    throw 1;
   }
-  throw 1;
+
+  if(p->getData() == value)
+  {
+    return value;
+  }
+
+  if (p->getData() < value){
+      return rsearch(value, p->getRight());
+  } 
+  else {
+     return rsearch(value, p->getLeft());
+  }
 }
 
 
