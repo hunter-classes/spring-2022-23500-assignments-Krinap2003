@@ -9,6 +9,8 @@ class BSTree{
     public:
     BSTree();
     void insert(int d);
+    void rinsert(int d);
+    void rinsert(int d, Node *p);
     std::string traverse(Node *n);
     std::string get_debug_string();
     int search(int value);

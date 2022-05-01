@@ -153,6 +153,44 @@ int BSTree::rsearch(int value, Node *p){
   }
 }
 
+void BSTree::rinsert(int value, Node *p){
+  // Node *newnode = new Node(value);
+  //   Node *trailer;
+  //   if(root != nullptr)
+  //   {
+  //     trailer = p;
+  //   }
+  //   if(p->getData() < value){
+  //     p = p->getRight();
+  //   }
+  //   if(p->getData() > value){
+  //     p = p->getLeft();
+  //   }
+  //   rinsert(value, p);
+
+
+  //   if (root==nullptr){
+  //   root=newnode;
+  //   } else {
+  //   // trailer points to the node ABOVE where the new node
+  //   // will go.
+  //   // we have to figure out if newnode goes on the
+  //   // left of trailer or on the right of trailer
+  //   if (trailer->getData() < value){
+  //     trailer->setRight(newnode);
+  //   } else {
+  //     trailer->setLeft(newnode);
+  //   }
+  // }
+    
+}
+
+
+void BSTree::rinsert(int value){
+    //Node *newnode = new Node(value);
+    // Node *p = root;
+    //  rinsert(value, p);
+}
 
 
 // we will always insert new nodes as leaves
