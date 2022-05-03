@@ -51,10 +51,14 @@ int main()
         
     }
 
+    t->insert(21);
+    std::cout << "Insert 21:  "<< t->get_debug_string() << "\n";
+    t->deleteNum(21);
+    std::cout << "Delete 21:  "<< t->get_debug_string() << "\n";
     t->insert(22);
     std::cout <<  t->get_debug_string() << "\n";
-    t->insert(3);
-    std::cout <<  t->get_debug_string() << "\n";
+    // t->insert(55);
+    // std::cout <<  t->get_debug_string() << "\n";
 
     v=22;
     try {
@@ -71,6 +75,29 @@ int main()
         std::cout << v << " not found\n";
         
     }
+
+    t->deleteNum(22);
+    std::cout << "Delete 22:  "<< t->get_debug_string() << "\n";
+    t->insert(22);
+    std::cout << "Insert 22:  "<< t->get_debug_string() << "\n";
+    t->deleteNum(30);
+    std::cout << "Delete 30:  "<< t->get_debug_string() << "\n";
+    t->insert(9);
+    std::cout <<"Insert 9:  " << t->get_debug_string() << "\n";
+    t->deleteNum(8);
+    std::cout << "Delete 8:  "<< t->get_debug_string() << "\n";
+    t->insert(21);
+    std::cout <<"Insert 21:  " << t->get_debug_string() << "\n";
+    t->insert(23);
+    std::cout <<"Insert 23:  " << t->get_debug_string() << "\n";
+    t->insert(14);
+    std::cout <<"Insert 14:  " << t->get_debug_string() << "\n";
+    t->insert(17);
+    std::cout <<"Insert 17:  " << t->get_debug_string() << "\n";
+    t->deleteNum(5);
+     std::cout << "Delete 15:  "<< t->get_debug_string() << "\n";
+    
+
 
     return 0;
 }

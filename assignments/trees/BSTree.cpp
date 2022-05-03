@@ -9,16 +9,12 @@
  values in N's left subtree are less than the value in N and all the
  values in N's right subtree are greater than the value in N.
 
-
-
-
 */
+
+
 BSTree::BSTree(){
   root = nullptr;
 }
-
-
-
 
 // Traversal - visit every node in the tree
 // O(n)
@@ -153,46 +149,6 @@ int BSTree::rsearch(int value, Node *p){
   }
 }
 
-void BSTree::rinsert(int value, Node *p){
-  // Node *newnode = new Node(value);
-  //   Node *trailer;
-  //   if(root != nullptr)
-  //   {
-  //     trailer = p;
-  //   }
-  //   if(p->getData() < value){
-  //     p = p->getRight();
-  //   }
-  //   if(p->getData() > value){
-  //     p = p->getLeft();
-  //   }
-  //   rinsert(value, p);
-
-
-  //   if (root==nullptr){
-  //   root=newnode;
-  //   } else {
-  //   // trailer points to the node ABOVE where the new node
-  //   // will go.
-  //   // we have to figure out if newnode goes on the
-  //   // left of trailer or on the right of trailer
-  //   if (trailer->getData() < value){
-  //     trailer->setRight(newnode);
-  //   } else {
-  //     trailer->setLeft(newnode);
-  //   }
-  // }
-    
-}
-
-
-void BSTree::rinsert(int value){
-    //Node *newnode = new Node(value);
-    // Node *p = root;
-    //  rinsert(value, p);
-}
-
-
 // we will always insert new nodes as leaves
 void BSTree::insert(int value){
 
@@ -238,3 +194,143 @@ void BSTree::insert(int value){
 
   }
 }
+
+void BSTree::deleteNum(int d){
+
+  Node *p = root;
+  Node *trailer = p;
+
+
+  while (p != nullptr) 
+  {
+    // note that trailer is one level behind
+     //trailer = p;
+    if (p->getData() == d){
+      // do the stuff when the node is already in the tree
+      break;
+    }
+    else if (p->getData() < d){
+      trailer = p;
+      p = p->getRight(); 
+    } 
+    else{
+      trailer = p;
+      p = p->getLeft();
+    }
+  }
+
+  
+  if(p->getRight() == nullptr && p->getLeft() == nullptr)
+  {
+    if(trailer->getLeft()->getData() == d){
+      trailer->setLeft(nullptr);
+    }else{
+      trailer->setRight(nullptr);
+    }
+  }
+  else if((p->getRight() != nullptr && p->getLeft() == nullptr) || (p->getRight() == nullptr && p->getLeft() != nullptr))
+  {
+    //std::cout<<p->getData()<<" "<<trailer->getData()<<"\n";
+    if(p->getData() > trailer->getData()){
+      if(p->getLeft() != nullptr)
+      {
+        trailer->setRight(p->getLeft());
+      }else{
+        trailer->setRight(p->getRight());
+      }
+    }else{
+      if(p->getLeft() != nullptr)
+      {
+        trailer->setLeft(p->getLeft());
+      }else{
+        trailer->setLeft(p->getRight());
+      }
+    }
+  }
+  else
+  {
+    Node *temp = p;
+    temp=temp->getLeft();
+    Node *trailer2 = p;
+    while(temp->getRight()!=nullptr){
+      trailer2 = temp;
+      temp=temp->getRight();
+    }
+
+    if(p->getData() > trailer->getData())
+    {
+        if(trailer2->getData() == p->getLeft()->getData()){
+          std::cout<<"hi"<<"\n";
+          trailer2->setRight(nullptr);
+        }
+        else{
+          //std::cout<<"hi"<<"\n";
+          trailer2->setLeft(nullptr);
+      
+        }
+        p->setData(temp->getData());
+        trailer->setRight(p);
+      }
+      else{
+
+        if(trailer2->getData() == p->getLeft()->getData()){
+          trailer2->setRight(nullptr);
+        }
+        else{
+          trailer2->setLeft(nullptr);
+        }
+        p->setData(temp->getData());
+        trailer->setLeft(p);  
+      }
+
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+//void BSTree::rinsert(int value, Node *p){
+//   Node *newnode = new Node(value);
+//     Node *trailer;
+//     if(root != nullptr)
+//     {
+//       trailer = p;
+//     }
+//     if(p->getData() < value){
+//       p = p->getRight();
+//     }
+//     if(p->getData() > value){
+//       p = p->getLeft();
+//     }
+//     rinsert(value, p);
+
+
+//     if (root==nullptr){
+//     root=newnode;
+//     } else {
+//     // trailer points to the node ABOVE where the new node
+//     // will go.
+//     // we have to figure out if newnode goes on the
+//     // left of trailer or on the right of trailer
+//     if (trailer->getData() < value){
+//       trailer->setRight(newnode);
+//     } else {
+//       trailer->setLeft(newnode);
+//     }
+//   }
+    
+// }
+
+
+// void BSTree::rinsert(int value){
+//     Node *newnode = new Node(value);
+//     Node *p = root;
+//      rinsert(value, p);
+// }
