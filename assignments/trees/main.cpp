@@ -76,30 +76,45 @@ int main()
         
     }
 
+
+    std::cout<<"\n----------------------------------------------";
+    std::cout<<"\nDelete Leaf \n\n";
+    std::cout << "Tree:  "<< t->get_debug_string() << "\n";
     t->deleteNum(22);
-    std::cout << "Delete 22:  "<< t->get_debug_string() << "\n";
+    std::cout << "Delete 22:  "<< t->get_debug_string() << "\n\n";
+
     t->insert(22);
     std::cout << "Insert 22:  "<< t->get_debug_string() << "\n";
     t->deleteNum(30);
-    std::cout << "Delete 30:  "<< t->get_debug_string() << "\n";
+    std::cout << "Delete 30:  "<< t->get_debug_string() << "\n\n";
+
+    std::cout<<"\n----------------------------------------------";
+    std::cout<<"\nDelete Node with one child \n\n";
     t->insert(9);
     std::cout <<"Insert 9:  " << t->get_debug_string() << "\n";
     t->deleteNum(8);
-    std::cout << "Delete 8:  "<< t->get_debug_string() << "\n";
+    std::cout << "Delete 8:  "<< t->get_debug_string() << "\n\n";
+
     t->insert(21);
     std::cout <<"Insert 21:  " << t->get_debug_string() << "\n";
     t->insert(23);
     std::cout <<"Insert 23:  " << t->get_debug_string() << "\n";
     t->insert(14);
     std::cout <<"Insert 14:  " << t->get_debug_string() << "\n";
+    t->deleteNum(15);
+    std::cout << "Delete 15:  "<< t->get_debug_string() << "\n\n";
+
+
+    std::cout<<"\n----------------------------------------------";
+    std::cout<<"\nDelete Node with Two children \n\n";
+    t->insert(15);
+    std::cout <<"Insert 15:  " << t->get_debug_string() << "\n";
     t->insert(17);
     std::cout <<"Insert 17:  " << t->get_debug_string() << "\n";
     t->deleteNum(5);
-    std::cout << "Delete 5:  "<< t->get_debug_string() << "\n";
-    // t->deleteNum(20);
-    // std::cout << "Delete 20:  "<< t->get_debug_string() << "\n";
-    t->deleteNum(22);
-    std::cout << "Delete 15:  "<< t->get_debug_string() << "\n";
+    std::cout << "Delete 5:  "<< t->get_debug_string() << "\n\n";
+    t->deleteNum(20);
+    std::cout << "Delete 20:  "<< t->get_debug_string() << "\n";
     
 
 
