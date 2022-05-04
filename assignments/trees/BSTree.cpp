@@ -195,6 +195,8 @@ void BSTree::insert(int value){
   }
 }
 
+
+//Delete the node
 void BSTree::deleteNum(int d){
 
   Node *p = root;
@@ -219,7 +221,7 @@ void BSTree::deleteNum(int d){
     }
   }
 
-  
+  //Leaf
   if(p->getRight() == nullptr && p->getLeft() == nullptr)
   {
     if(trailer->getLeft()->getData() == d){
@@ -228,9 +230,9 @@ void BSTree::deleteNum(int d){
       trailer->setRight(nullptr);
     }
   }
+  //One child
   else if((p->getRight() != nullptr && p->getLeft() == nullptr) || (p->getRight() == nullptr && p->getLeft() != nullptr))
   {
-    //std::cout<<p->getData()<<" "<<trailer->getData()<<"\n";
     if(p->getData() > trailer->getData()){
       if(p->getLeft() != nullptr)
       {
@@ -247,6 +249,7 @@ void BSTree::deleteNum(int d){
       }
     }
   }
+  //Two children
   else
   {
     Node *temp = p;
@@ -260,13 +263,10 @@ void BSTree::deleteNum(int d){
     if(p->getData() > trailer->getData())
     {
         if(trailer2->getData() == p->getLeft()->getData()){
-          std::cout<<"hi"<<"\n";
           trailer2->setRight(nullptr);
         }
         else{
-          //std::cout<<"hi"<<"\n";
           trailer2->setLeft(nullptr);
-      
         }
         p->setData(temp->getData());
         trailer->setRight(p);
