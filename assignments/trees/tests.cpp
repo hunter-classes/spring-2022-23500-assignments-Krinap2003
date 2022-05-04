@@ -56,3 +56,4 @@ TEST_CASE("delete")
     CHECK(t->get_debug_string() == ", 5, , 7, , 10, , 15, , 20, , 21, , 32, ");
 
 }
+
