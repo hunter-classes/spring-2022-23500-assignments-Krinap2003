@@ -96,8 +96,10 @@ int main()
     std::cout <<"Insert 17:  " << t->get_debug_string() << "\n";
     t->deleteNum(5);
     std::cout << "Delete 5:  "<< t->get_debug_string() << "\n";
-    t->deleteNum(20);
-    std::cout << "Delete 20:  "<< t->get_debug_string() << "\n";
+    // t->deleteNum(20);
+    // std::cout << "Delete 20:  "<< t->get_debug_string() << "\n";
+    t->deleteNum(22);
+    std::cout << "Delete 15:  "<< t->get_debug_string() << "\n";
     
 
 

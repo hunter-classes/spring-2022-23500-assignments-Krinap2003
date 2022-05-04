@@ -253,36 +253,25 @@ void BSTree::deleteNum(int d){
   else
   {
     Node *temp = p;
-    temp=temp->getLeft();
-    Node *trailer2 = p;
-    while(temp->getRight()!=nullptr){
-      trailer2 = temp;
-      temp=temp->getRight();
+    temp=temp->getRight();
+    while(temp->getLeft()!=nullptr){
+      temp=temp->getLeft();
     }
 
+    //std::cout<<p->getData()<<" "<<trailer->getData()<<" "<<temp->getData()<<"\n";
     if(p->getData() > trailer->getData())
     {
-        if(trailer2->getData() == p->getLeft()->getData()){
-          trailer2->setRight(nullptr);
-        }
-        else{
-          trailer2->setLeft(nullptr);
-        }
-        p->setData(temp->getData());
-        trailer->setRight(p);
+        int val = temp->getData();
+        deleteNum(temp->getData());
+        p->setData(val);
+        //trailer->setRight(p);
       }
       else{
-
-        if(trailer2->getData() == p->getLeft()->getData()){
-          trailer2->setRight(nullptr);
-        }
-        else{
-          trailer2->setLeft(nullptr);
-        }
-        p->setData(temp->getData());
-        trailer->setLeft(p);  
+        int val = temp->getData();
+        deleteNum(temp->getData());
+        p->setData(val);
+        //trailer->setLeft(p);  
       }
-
   }
   
 }
