@@ -197,103 +197,6 @@ void BSTree::insert(int value){
 
 
 //Delete the node
-// void BSTree::deleteNum(int d){
-
-//   Node *p = root;
-//   Node *trailer = p;
-
-
-//   while (p != nullptr) 
-//   {
-//     // note that trailer is one level behind
-//      //trailer = p;
-//     if (p->getData() == d){
-//       // do the stuff when the node is already in the tree
-//       break;
-//     }
-//     else if (p->getData() < d){
-//       trailer = p;
-//       p = p->getRight(); 
-//     } 
-//     else{
-//       trailer = p;
-//       p = p->getLeft();
-//     }
-//   }
-
-//   //Leaf
-//   if(p->getRight() == nullptr && p->getLeft() == nullptr)
-//   {
-//     std::cout<<"hi"<<"\n";
-//     std::cout<<p->getData()<<trailer->getData()<<"\n";
-//     if(trailer->getLeft()->getData() == d){
-//       trailer->setLeft(nullptr);
-      
-//     }else if(trailer->getRight()->getData() == d){
-//       trailer->setRight(nullptr);
-//     }
-//     // if(trailer->getLeft()) { 
-//     //     trailer->setLeft(nullptr);
-//     // } else {
-//     //     trailer->setRight(nullptr);
-//     // }
-
-//     p = nullptr;
-//     delete p;
-//     return;
-//   }
-//   //One child
-//   if((p->getRight() != nullptr && p->getLeft() == nullptr) || (p->getRight() == nullptr && p->getLeft() != nullptr))
-//   {
-//     if(p->getData() > trailer->getData()){
-//       if(p->getLeft() != nullptr)
-//       {
-//         trailer->setRight(p->getLeft());
-//       }else{
-//         trailer->setRight(p->getRight());
-//       }
-//     }else{
-//       if(p->getLeft() != nullptr)
-//       {
-//         trailer->setLeft(p->getLeft());
-//       }else{
-//         trailer->setLeft(p->getRight());
-//       }
-//     }
-//     p = nullptr;
-//     delete p;
-//     return;
-//   }
-//   //Two children
-//   if(p->getLeft() != nullptr && p->getRight() != nullptr)
-//   {
-//     Node *temp = p;
-//     temp=temp->getRight();
-//     while(temp->getLeft()!=nullptr){
-//       temp=temp->getLeft();
-//     }
-
-//     std::cout<<p->getData()<<" "<<trailer->getData()<<" "<<temp->getData()<<"\n";
-//     if(p->getData() > trailer->getData())
-//     {
-//         int val = temp->getData();
-//         //deleteNum(temp->getData());
-//         p->setData(val);
-//         trailer->setRight(p);
-//       }
-//       else{
-//         int val = temp->getData();
-//         //deleteNum(temp->getData());
-//         p->setData(val);
-//         trailer->setLeft(p);  
-//      }
-//     p = nullptr;
-//     delete p;
-//     return;
-//   }
-  
-// }
-
 void BSTree::deleteNum(int d){
 
   Node *p = root;
@@ -320,12 +223,12 @@ void BSTree::deleteNum(int d){
 
   //Leaf
   if(p->getRight() == nullptr && p->getLeft() == nullptr)
-  {
-    if(trailer->getLeft()->getData() == d){
-      trailer->setLeft(nullptr);
-      
-    }else if(trailer->getRight()->getData() == d){
+  { 
+    if(p->getData() > trailer->getData()){
       trailer->setRight(nullptr);
+      
+    }else{ 
+      trailer->setLeft(nullptr);
     }
 
     p = nullptr;
@@ -368,15 +271,11 @@ void BSTree::deleteNum(int d){
         int val = temp->getData();
         deleteNum(temp->getData());
         p->setData(val);
-       // trailer->setRight(p);
-    
       }
       else{
         int val = temp->getData();
         deleteNum(temp->getData());
         p->setData(val);
-        //trailer->setLeft(p);  
-    
      }
     temp = nullptr;
     delete temp;
