@@ -60,15 +60,12 @@ TEST_CASE("delete")
     CHECK(t->get_debug_string() == ", 5, , 7, , 15, , 20, , 21, ");
     t->insert(22);
     CHECK(t->get_debug_string() == ", 5, , 7, , 15, , 20, , 21, , 22, ");
-    try{
-        int search = t->search(10);
-    }catch(int e){
-        CHECK(e == 1);
-    }
     t->insert(3);
     CHECK(t->get_debug_string() == ", 3, , 5, , 7, , 15, , 20, , 21, , 22, ");
     t->insert(10);
     CHECK(t->get_debug_string() == ", 3, , 5, , 7, , 10, , 15, , 20, , 21, , 22, ");
     t->deleteNum(3);
     CHECK(t->get_debug_string() == ", 5, , 7, , 10, , 15, , 20, , 21, , 22, ");
+    // t->deleteNum(22);
+    // CHECK(t->get_debug_string() == ", 5, , 7, , 10, , 15, , 20, , 21, ");
 }
