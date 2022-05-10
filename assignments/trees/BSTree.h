@@ -17,6 +17,12 @@ class BSTree{
     int rsearch(int value);
     int rsearch(int value, Node *p);
     void deleteNum(int d);
+    int countLeaves();
+    int countLeavesHelper(Node *p);
+    int getHeight();
+    int heightHelper(Node *p);
+    int sumAtLevel(int level);
+    int sumAtLevelHelper(Node *p, int level, int k);
     void setup();
 
 };

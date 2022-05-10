@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Node.h"
 #include "BSTree.h"
+#include <algorithm>
 /*
  * 
  BST - Binary Search Tree
@@ -284,3 +285,75 @@ void BSTree::deleteNum(int d){
   
 }
 
+
+//Count and return the number of leaves in the tree
+int BSTree::countLeaves(){
+  return countLeavesHelper(root);
+}
+
+//Count Leaves helper
+int BSTree::countLeavesHelper(Node *p)
+{
+  if(p == nullptr){
+    return 0;
+  }
+  else if(p->getLeft() == nullptr && p->getRight() == nullptr){
+    return 1;
+  }
+  return countLeavesHelper(p->getLeft())+countLeavesHelper(p->getRight());
+}
+
+
+//Count and return the height of the tree
+int BSTree::getHeight(){
+  return heightHelper(root);
+}
+
+//Height helper
+int BSTree::heightHelper(Node *p){
+
+  if(p == nullptr){
+    return  0;
+  }
+  else{
+    return std::max(heightHelper(p->getLeft()), heightHelper(p->getRight()))+1;
+  }
+
+}
+
+
+//Calculate and return the sum at a given level
+int BSTree::sumAtLevelHelper(Node *p, int level, int k){
+  if (p == nullptr)
+		{
+			return 0;
+		}
+		if (k == level)
+		{
+			// We get level node
+			return p->getData();
+		}
+		return sumAtLevelHelper(p->getLeft(), level, k + 1) + sumAtLevelHelper(p->getRight(), level, k + 1);
+
+}
+
+//count level sum helper
+int BSTree::sumAtLevel(int level){
+  Node *p=root;
+  static int result = 0;
+  if (level <= 0)
+		{
+			// Invalid level
+			return 0;
+		}
+		else if (p == nullptr)
+		{
+			throw 1;
+		}
+		else
+		{
+			// Find level sum
+			 result = sumAtLevelHelper(this->root, level, 1);
+       return result;
+		}
+}

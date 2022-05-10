@@ -117,7 +117,33 @@ int main()
     std::cout << "Delete 10:  "<< t->get_debug_string() << "\n";
     t->deleteNum(23);
     std::cout << "Delete 23:  "<< t->get_debug_string() << "\n";
-    
+    int height = t->getHeight();
+    std::cout<<"Height of the tree: "<<height<<"\n";
+
+
+    std::cout<<"\n----------------------------------------------";
+    std::cout<<"\nCount Leaves \n\n";
+    BSTree *t2 = new BSTree();
+    std::cout<<"Three: "<<t2->get_debug_string()<<"\n";
+    int count = t2->countLeaves();
+    std::cout<<"Leaves on the tree: "<<count<<"\n";
+    t2->setup();
+    std::cout<<"Three: "<<t2->get_debug_string()<<"\n";
+    count = t2->countLeaves();
+    std::cout<<"Leaves on the tree: "<<count<<"\n";
+    height = t2->getHeight();
+    std::cout<<"Height of the tree: "<<height<<"\n";
+    int sum = t2->sumAtLevel(1);
+    std::cout<<"Sum at level 1: "<<sum<<"\n\n";
+    t2->insert(7);
+    std::cout<<"Insert 7: "<<t2->get_debug_string()<<"\n";
+    sum = t2->sumAtLevel(2);
+    std::cout<<"Sum at level 4: "<<sum<<"\n";
+    sum = t2->sumAtLevel(4);
+    std::cout<<"Sum at level 4: "<<sum<<"\n";
+    height = t2->getHeight();
+    std::cout<<"Height of the tree: "<<height<<"\n";
+
 
 
     return 0;

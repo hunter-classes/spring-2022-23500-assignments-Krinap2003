@@ -69,3 +69,39 @@ TEST_CASE("delete")
     t->deleteNum(22);
     CHECK(t->get_debug_string() == ", 5, , 7, , 10, , 15, , 20, , 21, ");
 }
+
+BSTree *t2 = new BSTree();
+
+TEST_CASE("count leaves")
+{
+    CHECK(t2->countLeaves() == 0);
+    t2->insert(10);
+    CHECK(t2->countLeaves() == 1);
+    t2->setup();
+    CHECK(t2->countLeaves() == 4);
+    CHECK(t2->get_debug_string() == ", 3, , 5, , 8, , 10, , 15, , 20, , 30, ");
+    t2->insert(9);
+    CHECK(t2->countLeaves() == 4);
+    CHECK(t2->get_debug_string() == ", 3, , 5, , 8, , 9, , 10, , 15, , 20, , 30, ");
+}
+
+TEST_CASE("height")
+{
+    CHECK(t2->getHeight() == 4);
+    BSTree *t3 = new BSTree();
+    CHECK(t3->getHeight() == 0);
+    t3->setup();
+    CHECK(t3->getHeight() == 3);
+    t3->insert(31);
+    t3->insert(32);
+    CHECK(t3->getHeight() == 5);
+}
+
+TEST_CASE("Get Level Sum")
+{
+    CHECK(t2->sumAtLevel(0) == 0);
+    CHECK(t2->sumAtLevel(1) == 10);
+    CHECK(t2->sumAtLevel(2) == 25);
+    CHECK(t2->sumAtLevel(3) == 56);
+    CHECK(t2->sumAtLevel(4) == 9);
+}
