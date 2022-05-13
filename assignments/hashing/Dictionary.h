@@ -8,8 +8,8 @@ class Dictionary{
     public: 
         Dictionary();
         ~Dictionary();
-        void insert(Person p);
+        void insert(Person *p);
         Person* retrivePerson(int id);
-        std::string getAllPeopll();
+        std::string getAllPeople();
 
 };
