@@ -9,7 +9,7 @@ class Dictionary{
         Dictionary();
         ~Dictionary();
         void insert(Person p);
-        Person retrivePerson(int id);
+        Person* retrivePerson(int id);
         std::string getAllPeopll();
 
 };
