@@ -15,6 +15,6 @@ class Node{
         void setPerson(Person *data);
         void setNext(Node *next);
 
-        Person getPerson();
+        Person* getPerson();
         Node *getNext();
 };

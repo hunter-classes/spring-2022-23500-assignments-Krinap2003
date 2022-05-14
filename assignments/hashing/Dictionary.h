@@ -1,5 +1,6 @@
 #pragma once
 #include "OList.h"
+#define Person_Not_Found 1
 
 class Dictionary{
     private:
@@ -8,8 +9,10 @@ class Dictionary{
     public: 
         Dictionary();
         ~Dictionary();
+        int hashKey(std::string s);
         void insert(Person *p);
-        Person* retrivePerson(int id);
-        std::string getAllPeople();
+        Person* retrivePerson(Person *p);
+        std::string getAllKey();
+        //std::string toString();
 
 };

@@ -23,8 +23,8 @@ void Node::setNext (Node *next){
     this->next = next;
 }
 
-Person Node::getPerson(){
-    return *this->data;
+Person* Node::getPerson(){
+    return this->data;
 }
 
 Node *Node::getNext()

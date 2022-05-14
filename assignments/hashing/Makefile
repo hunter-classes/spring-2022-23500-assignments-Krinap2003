@@ -2,7 +2,7 @@ main: main.o Dictionary.o OList.o Node.o Person.o
 	g++ -o main main.o Dictionary.o OList.o Node.o Person.o 
 
 tests: tests.o Dictionary.o OList.o Node.o Person.o 
-	g++ -o tests main.o Dictionary.o OList.o Node.o Person.o 
+	g++ -o tests tests.o Dictionary.o OList.o Node.o Person.o 
 
 main.o: main.cpp Dictionary.h Person.h OList.h Node.h
 	g++ -c main.cpp -std=c++11

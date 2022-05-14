@@ -15,7 +15,7 @@ Deconstructor
 */
 OList::~OList(){
   Node *trailer;
-  std::cerr << "Destructing\n";
+  //std::cerr << "Destructing\n";
   while(head != nullptr){
     trailer = head;
     head = head->getNext();
@@ -110,13 +110,24 @@ String representation of the entire linked list
 std::string OList::toString()
 {
     Node *walker = head;
-    std::string s = "head->";
+    std::string s = "";
     while(walker != nullptr)
     {
-        s += walker->getPerson().get_name() + "->";
+        s += walker->getPerson()->get_name() + "->";
         walker = walker->getNext();
     }
     s = s+"nullptr"; 
 
     return s;
+}
+
+
+Person* OList::get(Person *p) {
+    Node* walker = head;
+    while(walker != nullptr) {
+        if(walker->getPerson() == p) {
+           return walker->getPerson();
+        }
+    }
+    return nullptr;
 }
