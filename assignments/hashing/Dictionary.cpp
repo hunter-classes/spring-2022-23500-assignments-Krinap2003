@@ -11,8 +11,11 @@ Dictionary::Dictionary(){
 }
 
 Dictionary::~Dictionary(){
-    for(int i = 0; i < 10; i++){
-        arr[i]->~OList();
+    // for(int i = 0; i < 10; i++){
+    //     arr[i]->~OList();
+    // }
+    for(auto x: arr){
+        delete x;
     }
 }
 
@@ -34,11 +37,11 @@ void Dictionary::insert(Person *p){
 
 Person* Dictionary::retrivePerson(Person* p){
     int index = hashKey(p->get_name());
-    // if(arr[index] == nullptr){
+    if(arr[index] == nullptr){
     
-    //     return nullptr;
-    // }
-    return  arr[index]->get(p);
+       return nullptr;
+    }
+    return  arr[index]->get(p->get_name());
 }
 
 
@@ -51,12 +54,3 @@ std::string Dictionary::getAllKey(){
 }
 
 
-// std::string Dictionary::toString(){
-//       std::string result = "";
-//    for(int i = 0; i<10; i++){
-//           if(arr[i]){
-//               result+=arr[i]->toStringNew()+"\n";
-//           }
-//    }
-//    return result;
-// }

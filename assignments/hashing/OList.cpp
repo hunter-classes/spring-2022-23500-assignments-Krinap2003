@@ -122,12 +122,12 @@ std::string OList::toString()
 }
 
 
-Person* OList::get(Person *p) {
-    Node* walker = head;
-    while(walker != nullptr) {
-        if(walker->getPerson() == p) {
-           return walker->getPerson();
-        }
+Person* OList::get(std::string name){
+    Node* traveler = head;
+    while(traveler!=nullptr && traveler->getPerson()->get_name()!=name){
+        traveler=traveler->getNext();
     }
-    return nullptr;
+    if (traveler==nullptr)
+        return nullptr;
+    return traveler->getPerson();
 }

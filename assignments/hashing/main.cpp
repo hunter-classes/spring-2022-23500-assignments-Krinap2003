@@ -35,8 +35,6 @@ int main(){
 
     std::cout<<"\n-------------- Destructor ----------\n";
     d1->~Dictionary();
-    std::cout<<d1->getAllKey()<<"\n";
-
 
     return 0;
 }

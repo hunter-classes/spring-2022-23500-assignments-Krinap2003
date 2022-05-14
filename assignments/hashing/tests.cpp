@@ -15,6 +15,7 @@ Person *p7 = new Person("Ramirez","Lola",7);
 Person *p8 = new Person("Patel","Aditi",8);
 
 Person *p9 = new Person("Unknow","Person",9);
+Person *p10 = new Person("Unknow2","Person2",10);
 
 TEST_CASE("Insert and Hash Key")
 {
@@ -50,8 +51,9 @@ TEST_CASE("Retrive Person")
     CHECK(searchP->get_name() == "Aditi, Patel");
     searchP = d1->retrivePerson(p4);
     CHECK(searchP->get_name() == "Kevin, Harris");
-    //  searchP = d1->retrivePerson(p9);
-    // CHECK(d1->retrivePerson(p9) == nullptr);
+    CHECK(d1->retrivePerson(p9) == nullptr);
+    CHECK(d1->retrivePerson(p10) == nullptr);
+    d1->~Dictionary();
 }
 
 

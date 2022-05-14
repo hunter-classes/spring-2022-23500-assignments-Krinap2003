@@ -13,6 +13,4 @@ class Dictionary{
         void insert(Person *p);
         Person* retrivePerson(Person *p);
         std::string getAllKey();
-        //std::string toString();
-
 };
